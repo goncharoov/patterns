@@ -9,17 +9,20 @@ import java.util.Locale;
 public class DataGenerator {
     private DataGenerator() {
     }
+
     public static class Registration {
         private Registration() {
         }
-        public  static CardDeliveryOrder generate(){
+
+        public static CardDeliveryOrder generate() {
             Faker faker = new Faker(new Locale("ru"));
-            return new CardDeliveryOrder (
+            return new CardDeliveryOrder(
                     faker.address().city(),
                     faker.name().name(),
                     faker.phoneNumber().phoneNumber());
         }
-        public static String getDayVisit(int plusDays){
+
+        public static String getDayVisit(int plusDays) {
             LocalDate today = LocalDate.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
             LocalDate date = today.plusDays(plusDays);

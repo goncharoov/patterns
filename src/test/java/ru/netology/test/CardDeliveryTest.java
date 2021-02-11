@@ -1,4 +1,5 @@
 package ru.netology.test;
+
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,10 +18,11 @@ import static java.time.Duration.*;
 public class CardDeliveryTest {
     @BeforeEach
     void setUpAll() {
-        open("http://localhost:9999/"); }
+        open("http://localhost:9999/");
+    }
 
     @Test
-    void shouldCreateOrderToDelivery () {
+    void shouldCreateOrderToDelivery() {
         $("[data-test-id = city] input").setValue(DataGenerator.Registration.generate().getCity());
         $("[data-test-id = date] input").sendKeys(Keys.chord(Keys.CONTROL + "A"), Keys.DELETE);
         $("[data-test-id = date] input").setValue(DataGenerator.Registration.getDayVisit(3));
@@ -49,52 +51,4 @@ public class CardDeliveryTest {
         $("[data-test-id = success-notification]").shouldBe(visible).shouldHave(text(DataGenerator.Registration.getDayVisit(7)));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //    @Test
-//    void shouldCardDeliveryOnDifferentDate() {
-//        $("[data-test-id=city] input").setValue(DataGenerator.Registration.generateByCard().getCity());
-//        $("[data-test-id=date] input").sendKeys(Keys.CONTROL+"A"+Keys.DELETE);
-//        $("[data-test-id=date] input").setValue(DataGenerator.Registration.getDayVisit(3));
-//        $("[data-test-id=name] input").setValue(DataGenerator.Registration.generateByCard().getName());
-//        $("[data-test-id=phone] input").setValue(DataGenerator.Registration.generateByCard().getPhone());
-//        $("[data-test-id=agreement]").click();
-//        $("button.button").click();
-//        $(withText("Успешно!")).shouldBe(visible);
-//        $("[data-test-id=success-notification] .notification__content").shouldHave(text(DataGenerator.Registration.getDayVisit(3)));
-//        $("[data-test-id=date] input").sendKeys(Keys.CONTROL+"A"+Keys.DELETE);
-//        $("[data-test-id=date] input").setValue(DataGenerator.Registration.getDayVisit(3));
-//        $("button.button").click();
-//        $(withText("Необходимо подтверждение")).shouldBe(Condition.visible, Duration.ofMillis(15000));
-//        $("[data-test-id=replan-notification] .button").click();
-//        $(withText("Успешно!")).shouldBe(Condition.visible, Duration.ofMillis(15000));
-//        $("[data-test-id=success-notification] .notification__content").shouldHave(exactText("Встреча " +
-//                "успешно запланирована на "+ DataGenerator.Registration.getDayVisit(3)));
-//    }
 }
