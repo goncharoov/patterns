@@ -30,7 +30,9 @@ public class CardDeliveryTest {
         $("[data-test-id = phone] input").setValue(DataGenerator.Registration.generate().getPhone());
         $("[data-test-id = agreement]").click();
         $(withText("Запланировать")).click();
-        $("[data-test-id = success-notification]").shouldBe(visible, ofMillis(15000)).shouldHave(text(DataGenerator.Registration.getDayVisit(3)));
+        $("[data-test-id = success-notification]")
+                .shouldBe(visible, ofMillis(15000))
+                .shouldHave(text(DataGenerator.Registration.getDayVisit(3)));
     }
 
     @Test
@@ -42,13 +44,17 @@ public class CardDeliveryTest {
         $("[data-test-id = phone] input").setValue(DataGenerator.Registration.generate().getPhone());
         $("[data-test-id = agreement]").click();
         $(withText("Запланировать")).click();
-        $("[data-test-id = success-notification]").shouldBe(visible, ofMillis(15000)).shouldHave(text(DataGenerator.Registration.getDayVisit(3)));
+        $("[data-test-id = success-notification]")
+                .shouldBe(visible, ofMillis(15000))
+                .shouldHave(text(DataGenerator.Registration.getDayVisit(3)));
         $("[data-test-id = date] input").sendKeys(Keys.chord(Keys.CONTROL + "A"), Keys.DELETE);
         $("[data-test-id = date] input").setValue(DataGenerator.Registration.getDayVisit(7));
         $(withText("Запланировать")).click();
         $("[data-test-id = replan-notification]").shouldBe(visible, ofMillis(15000));
         $("[data-test-id = replan-notification] .button").click();
-        $("[data-test-id = success-notification]").shouldBe(visible).shouldHave(text(DataGenerator.Registration.getDayVisit(7)));
+        $("[data-test-id = success-notification]")
+                .shouldBe(visible)
+                .shouldHave(text(DataGenerator.Registration.getDayVisit(7)));
     }
 
 }
