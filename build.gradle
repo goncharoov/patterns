@@ -1,11 +1,26 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.8.1'
 }
 
 group 'ru.netology.web'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = 11
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+allure {
+    autoconfigure = true
+    version = '2.13.8'
+
+    useJUnit5 {
+        version = '2.13.8'
+    }
+}
+
 repositories {
+    jcenter()
     mavenCentral()
 }
 
@@ -13,7 +28,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'com.codeborne:selenide:5.18.0'
     compile group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
-
+    testImplementation 'io.qameta.allure:allure-selenide:2.13.6'
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
     testCompileOnly 'org.projectlombok:lombok:1.18.16'
